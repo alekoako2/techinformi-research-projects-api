@@ -13,11 +13,11 @@ interface IResearchProject {
   toYear: string
 }
 
-interface IResearchProjects {
+export interface IResearchProjects {
   records: IResearchProject[]
   paging: {
     first: string
-    pages: []
+    pages: { total_row: number }[]
     last: string
   }
 }
@@ -33,5 +33,5 @@ export const researchProjects = async (
 
   const res = await fetch(url)
   const { records }: IResearchProjects = await res.json()
-  return records
+  return records[0]
 }
