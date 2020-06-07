@@ -1,7 +1,7 @@
 import { Context } from '@interfaces/apollo/context'
 import { getWhereInput } from '../../utils'
-import fetch from 'node-fetch'
 import { IResearchProjects } from './research-projects'
+import axios from 'axios'
 
 export const countResearchProjects = async (
   _,
@@ -13,9 +13,8 @@ export const countResearchProjects = async (
   if (first) url += `&records_per_page=${first}`
   if (skip) url += `&page=${skip}`
 
-  const res = await fetch(url)
-  const { paging }: IResearchProjects = await res.json()
+  const res = await axios.get(url)
+  const { paging }: IResearchProjects = await res.data
   const { total_row } = paging.pages[0]
-  console.log(total_row)
   return total_row
 }

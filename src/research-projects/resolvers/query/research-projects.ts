@@ -1,6 +1,6 @@
 import { Context } from '@interfaces/apollo/context'
 import { getWhereInput } from '../../utils'
-import fetch from 'node-fetch'
+import axios from 'axios'
 
 interface IResearchProject {
   id: string
@@ -31,7 +31,7 @@ export const researchProjects = async (
   if (first) url += `&records_per_page=${first}`
   if (skip) url += `&page=${skip}`
 
-  const res = await fetch(url)
-  const { records }: IResearchProjects = await res.json()
+  const res = await axios.get(url)
+  const { records }: IResearchProjects = await res.data
   return records[0]
 }
