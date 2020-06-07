@@ -31,7 +31,7 @@ export const researchProjects = async (
   if (first) url += `&records_per_page=${first}`
   if (skip) url += `&page=${skip}`
 
-  const res = await axios.post(url)
+  const res = await axios.get(url)
   const { records }: IResearchProjects = await res.data
   return records[0]
 }

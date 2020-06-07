@@ -4,7 +4,7 @@ import { buildFederatedSchema } from '@apollo/federation'
 import { ResearchProjectsModule } from './research-projects'
 import express from 'express'
 
-const apiUrl = `http://techinformi.ge/api/product/read_paging.php`
+const apiUrl = `http://www/api/product/read_paging.php`
 
 const server = new ApolloServer({
   schema: buildFederatedSchema([ResearchProjectsModule]),
